@@ -4,5 +4,6 @@
 // Files
 *.sublime-workspace
 *.sublime-project
+*.log
 bundle.js
 bundle.js.map
