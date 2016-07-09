@@ -1,0 +1,8 @@
+// Directories
+/node_modules
+
+// Files
+*.sublime-workspace
+*.sublime-project
+bundle.js
+bundle.js.map
