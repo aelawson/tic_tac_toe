@@ -1,11 +1,31 @@
+import * as Types from '../constants/actiontypes';
 
-export function makeMove(id, player) {
-	// TODO: Code for making a move on the board.
+export function makeMove(tileId, player) {
+	// TODO: Action for making a move
 	return {
-		type: 'MAKE_MOVE',
+		type: Types.MAKE_MOVE,
 		payload: { 
-			id: id,
+			tileId: tileId,
 			player: player
+		}
+	};
+}
+
+export function resetBoard() {
+	// TODO: Action for resetting the board.
+	return {
+		type: Types.RESET_BOARD,
+		payload: { }
+	};
+}
+
+export function newGame(boardDim, numMatches) {
+	// TODO: Action for starting a new game.
+	return {
+		type: Types.NEW_GAME,
+		payload: { 
+			boardDim: boardDim,
+			numMatches: numMatches
 		}
 	};
 }
