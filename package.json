@@ -8,7 +8,7 @@
     "test": "test"
   },
   "scripts": {
-    "test": "mocha test/util/browser.js test/*.spec.js --compilers css:test/util/css-null-compiler.js",
+    "test": "mocha test/util/browser.js test/*.spec.js test/actions/*.spec.js --compilers css:test/util/css-null-compiler.js",
     "dev": "webpack -d --watch",
     "build": "webpack -p"
   },
