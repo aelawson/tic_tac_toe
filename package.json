@@ -4,7 +4,8 @@
   "description": "A version of Tic Tac Toe written with React.",
   "main": "index.js",
   "directories": {
-    "__test__": "__test__"
+    "src" : "src",
+    "test": "test"
   },
   "scripts": {
     "test": "mocha test/browser.js test/*.spec.js",

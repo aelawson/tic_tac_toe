@@ -3,7 +3,7 @@ import { shallow } from 'enzyme';
 import chai from 'chai';
 import chaiEnzyme from 'chai-enzyme'
 
-import Tile from '../src/components/board.jsx';
+import Tile from '../src/components/tile/tile.jsx';
 
 chai.use(chaiEnzyme());
 
