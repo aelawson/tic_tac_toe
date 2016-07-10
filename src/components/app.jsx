@@ -1,6 +1,6 @@
 import React from 'react';
-import Board from '../board/board';
-import Info from '../info/info.jsx';
+import Board from './board';
+import Info from './info';
 
 export default class App extends React.Component {
 	render() {
