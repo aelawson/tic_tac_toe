@@ -3,7 +3,7 @@ import { shallow } from 'enzyme';
 import chai from 'chai';
 import chaiEnzyme from 'chai-enzyme'
 
-import App from '../src/components/app/app.jsx';
+import App from '../src/components/app';
 
 chai.use(chaiEnzyme());
 
