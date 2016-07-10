@@ -1,13 +1,13 @@
 import React from 'react';
 import Board from '../board/board.jsx';
-import Tile from '../tile/tile.jsx';
+import Info from '../info/info.jsx';
 
 export default class App extends React.Component {
 	render() {
 		return (
 			<div>
+				<Info/>
 				<Board/>
-				<Tile/>
 			</div>
 		);
 	}

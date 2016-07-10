@@ -10,6 +10,6 @@ chai.use(chaiEnzyme());
 describe('Board', () => {
 	it('should contain a single <p> element', () => {
 	    const wrapper = shallow(<Board/>);
-	    chai.expect(wrapper.find('p')).to.have.length.of(1);
+	    chai.expect(wrapper.find('p')).to.have.length.of(0);
 	});
 });

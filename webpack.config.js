@@ -13,9 +13,14 @@ var config = {
 	module: {
 		loaders: [
 			{
-				test: /\.jsx?/,
+				test: /\.jsx$/,
 				include: DIR_SRC,
 				loader: 'babel'
+			},
+			{
+				test: /\.css$/,
+				include: DIR_SRC,
+				loader: 'style-loader!css-loader'
 			}
 		]
 	}
