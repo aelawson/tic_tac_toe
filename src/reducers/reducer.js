@@ -25,10 +25,11 @@ export function makeMoveOnBoard(board, player, tileId) {
 	return;
 }
 
-export function reducer(state=initialState, action) {
+export default function reducer(state=initialState, action) {
 	switch(action) {
 		case Types.MAKE_MOVE:
 			// TODO: Add logic for making a move.
+			return state;
 		case Types.RESET_BOARD:
 			// TODO: Add logic for resetting the board.
 			return {
