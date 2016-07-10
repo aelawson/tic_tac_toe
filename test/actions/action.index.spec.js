@@ -1,6 +1,6 @@
 import chai from 'chai';
 
-import * as actions from '../../src/actions/index.js';
+import * as actions from '../../src/actions/actions.js';
 
 describe('Actions', () => {
 	describe('makeMove()', () => {
