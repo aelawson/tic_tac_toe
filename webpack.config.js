@@ -6,16 +6,30 @@ var DIR_SRC = path.resolve(__dirname, './src');
 
 var config = {
 	entry: DIR_SRC + '/index.jsx',
+	devtool: 'source-map',
 	output: {
 		path: DIR_BUILD,
 		filename: 'bundle.js'
 	},
+	resolve: {
+		extensions: ['', '.js', '.jsx']
+	},
 	module: {
 		loaders: [
 			{
-				test: /\.jsx?/,
+				test: /\.jsx$/,
 				include: DIR_SRC,
 				loader: 'babel'
+			},
+			{
+				test: /\.js$/,
+				include: DIR_SRC,
+				loader: 'babel'
+			},
+			{
+				test: /\.css$/,
+				include: DIR_SRC,
+				loader: 'style-loader!css-loader'
 			}
 		]
 	}
