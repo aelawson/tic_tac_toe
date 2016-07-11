@@ -7,6 +7,7 @@ export default class Info extends React.Component {
 		return (
 			<div>
 				<h1>Tic Tac Toe</h1>
+				<h4>Num matches: { this.props.numMatches }</h4>
 			</div>
 		);
 	}

@@ -1,13 +1,14 @@
 import * as Types from '../constants/actiontypes';
 
 const initialState = {
-	board: null,
+	board: createBoard(3),
 	boardDim: null,
-	numMatches: null,
+	currentMatch: null,
+	numMatches: 3,
 	currentPlayer: null
 };
 
-export function createBoard(boardDim) {
+function createBoard(boardDim) {
 	var rows = new Array(boardDim);
 	for (var i = 0; i < boardDim; i++) {
 		// Add array of size 'boardDim' to represent cols.
@@ -17,31 +18,33 @@ export function createBoard(boardDim) {
 	return rows;
 }
 
-export function tileIdToCoords(tileId) {
+function tileIdToCoords(tileId) {
 	return;
 }
 
-export function makeMoveOnBoard(board, player, tileId) {
+function makeMoveOnBoard(board, player, tileId) {
 	return;
 }
 
-export default function reducer(state=initialState, action) {
-	switch(action) {
+export default function gameInfo(state=initialState, action) {
+	switch(action.type) {
 		case Types.MAKE_MOVE:
 			// TODO: Add logic for making a move.
 			return state;
 		case Types.RESET_BOARD:
-			// TODO: Add logic for resetting the board.
 			return {
 				board: createBoard(state.boardDim),
 				boardDim: state.boardDim,
+				currentPlayer: state.currentPlayer,
+				currentMatch: state.currentMatch + 1,
 				numMatches: state.numMatches
 			};
 		case Types.NEW_GAME:
-			// TODO: Add logic for starting a new game.
 			return {
 				board: createBoard(action.boardDim),
 				boardDim: action.boardDim,
+				currentPlayer: action.currentPlayer,
+				currentMatch: 1,
 				numMatches: action.numMatches
 			};
 		default:

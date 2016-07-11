@@ -6,6 +6,7 @@ var DIR_SRC = path.resolve(__dirname, './src');
 
 var config = {
 	entry: DIR_SRC + '/index.jsx',
+	devtool: 'source-map',
 	output: {
 		path: DIR_BUILD,
 		filename: 'bundle.js'

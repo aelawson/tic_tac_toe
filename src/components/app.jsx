@@ -1,31 +1,40 @@
 import React from 'react';
 import Board from './board';
 import Info from './info';
-import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 import { makeMove, resetBoard, newGame } from '../actions/actions';
 
-class App extends React.Component {
+// @connect(state => ({
+//     gameInfo: state.gameInfo
+// }))
+export default class App extends React.Component {
 	render() {
+		const {
+			gameInfo: {
+				board: board,
+				boardDim: boardDim,
+				currentMatch: currentMatch,
+				numMatches: numMatches,
+				currentPlayer: currentPlayer
+			},
+			dispatch
+		} = this.props;
+
 		return (
 			<div>
-				<Info/>
-				<Board/>
+				<Info
+					currentPlayer = {currentPlayer}
+					currentMatch = {currentMatch}
+					numMatches = {numMatches}
+				/>
+				<Board
+					board = {board}
+					currentPlayer = {currentPlayer}
+					makeMove = {makeMove}
+					resetBoard = {resetBoard}
+					newGame = {newGame}
+				/>
 			</div>
 		);
 	}
 }
-
-export default connect(
-	function mapStateToProps(state) {
-		return {
-			props: state
-		};
-	},
-	function mapDispatchToProps(dispatch) {
-		return {
-			makeMove: (tileId, currentPlayer) => dispatch(makeMove(tileId, currentPlayer)),
-			resetBoard: () => dispatch(resetBoard()),
-			newGame: (boardDim, numMatches) => dispatch(newGame(boardDim, numMatches))
-		};
-	}
-)(App);
