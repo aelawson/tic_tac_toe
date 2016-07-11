@@ -3,15 +3,15 @@ import * as GameTypes from '../constants/gametypes';
 import _ from 'lodash';
 
 const initialState = {
-	board: null,
+	board: [[]],
 	boardDim: 0,
 	currentMatch: 0,
 	numMatches: 0,
 	currentPlayer: GameTypes.PLAYER_ONE,
-	gameStatus: GameTypes.NOT_WINNER
+	matchStatus: GameTypes.NOT_WINNER
 };
 
-function createBoard(boardDim) {
+export function createBoard(boardDim) {
 	var rows = new Array(boardDim);
 	for (var i = 0; i < boardDim; i++) {
 		// Add array of size 'boardDim' to represent cols.
@@ -20,27 +20,26 @@ function createBoard(boardDim) {
 	return rows;
 }
 
-function isWinner(board, player) {
+export function isWinner(board, player) {
 	return GameTypes.NOT_WINNER;
 }
 
 export default function gameInfo(state=initialState, action) {
 	switch(action.type) {
 		case ActionTypes.MAKE_MOVE:
-			// Update board state.
+			// Update board state (deep clone, immutable states).
 			const tileId = action.payload.tileId;
 			const player = action.payload.player;
 			const board = _.cloneDeep(state.board);
 			board[tileId] = player;
 			// See if the current player is a winner.
-			const result = isWinner(board, player);
 			return {
 				board: board,
 				boardDim: state.boardDim,
 				currentPlayer: state.currentPlayer,
 				currentMatch: state.currentMatch,
 				numMatches: state.numMatches,
-				gameStatus: result
+				matchStatus: isWinner(board, player)
 			};
 		case ActionTypes.RESET_BOARD:
 			// Return new board with same dimensions as before.
@@ -49,7 +48,8 @@ export default function gameInfo(state=initialState, action) {
 				boardDim: state.boardDim,
 				currentPlayer: state.currentPlayer,
 				currentMatch: state.currentMatch + 1,
-				numMatches: state.numMatches
+				numMatches: state.numMatches,
+				matchStatus: GameTypes.NOT_WINNER
 			};
 		case ActionTypes.NEW_GAME:
 			// Let player choose new game settings.
@@ -58,7 +58,8 @@ export default function gameInfo(state=initialState, action) {
 				boardDim: action.boardDim,
 				currentPlayer: action.currentPlayer,
 				currentMatch: 1,
-				numMatches: action.numMatches
+				numMatches: action.numMatches,
+				matchStatus: GameTypes.NOT_WINNER
 			};
 		default:
 			return state;
