@@ -1,9 +1,11 @@
 import React from 'react';
 
+require('./css/tile.css');
+
 export default class Tile extends React.Component {
 	render() {
 		return (
-			<div class="tile">
+			<div className="tile">
 			</div>
 		);
 	}
