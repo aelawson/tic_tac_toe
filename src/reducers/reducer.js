@@ -17,16 +17,7 @@ function createBoard(boardDim) {
 		// Add array of size 'boardDim' to represent cols.
 		rows[i] = new Array(boardDim);
 	}
-
 	return rows;
-}
-
-function tileIdToCoords(tileId) {
-	return;
-}
-
-function makeMoveOnBoard(board, player, tileId) {
-	return;
 }
 
 function isWinner(board, player) {
@@ -36,10 +27,12 @@ function isWinner(board, player) {
 export default function gameInfo(state=initialState, action) {
 	switch(action.type) {
 		case ActionTypes.MAKE_MOVE:
+			// Update board state.
 			const tileId = action.payload.tileId;
 			const player = action.payload.player;
 			const board = _.cloneDeep(state.board);
 			board[tileId] = player;
+			// See if the current player is a winner.
 			const result = isWinner(board, player);
 			return {
 				board: board,
@@ -50,6 +43,7 @@ export default function gameInfo(state=initialState, action) {
 				gameStatus: result
 			};
 		case ActionTypes.RESET_BOARD:
+			// Return new board with same dimensions as before.
 			return {
 				board: createBoard(state.boardDim),
 				boardDim: state.boardDim,
@@ -58,6 +52,7 @@ export default function gameInfo(state=initialState, action) {
 				numMatches: state.numMatches
 			};
 		case ActionTypes.NEW_GAME:
+			// Let player choose new game settings.
 			return {
 				board: createBoard(action.boardDim),
 				boardDim: action.boardDim,
