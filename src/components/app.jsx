@@ -4,9 +4,6 @@ import Info from './info';
 import { bindActionCreators } from 'redux';
 import { makeMove, resetBoard, newGame } from '../actions/actions';
 
-// @connect(state => ({
-//     gameInfo: state.gameInfo
-// }))
 export default class App extends React.Component {
 	render() {
 		const {
