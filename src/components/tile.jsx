@@ -19,6 +19,9 @@ export default class Tile extends React.Component {
 	}
 
 	handleClick() {
-		console.log(this.props.tileId);
+		console.log("In handleClick (Tile)");
+		console.log(this.props.currentPlayer);
+		//this.props.makeMove(this.props.tileId, this.props.currentPlayer);
+		console.log("Made move");
 	}
 }
