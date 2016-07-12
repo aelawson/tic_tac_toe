@@ -2,9 +2,10 @@ import React from 'react';
 import Board from './board';
 import Info from './info';
 import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
 import { makeMove, resetBoard, newGame } from '../actions/actions';
 
-export default class App extends React.Component {
+export class App extends React.Component {
 	render() {
 		const {
 			gameInfo: {
@@ -35,3 +36,18 @@ export default class App extends React.Component {
 		);
 	}
 }
+
+export default connect(
+	function mapStateToProps(state) {
+		return {
+			gameInfo: state
+		};
+	},
+	function mapDispatchToProps(dispatch) {
+		return {
+			makeMove: (tileId, player) => dispatch(makeMove(tileId, player)),
+			resetBoard: () => dispatch(resetBoard()),
+			newGame: (boardDim, numMatches) => dispatch(newGame(boardDim, numMatches))		
+		};
+	}
+)(App);
