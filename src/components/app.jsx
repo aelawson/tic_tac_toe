@@ -5,9 +5,6 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { makeMove, resetBoard, newGame } from '../actions/actions';
 
-// @connect(state => ({
-//     gameInfo: state.gameInfo
-// }))
 export class App extends React.Component {
 	render() {
 		const {
