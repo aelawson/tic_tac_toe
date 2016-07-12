@@ -3,13 +3,13 @@ import { shallow } from 'enzyme';
 import chai from 'chai';
 import chaiEnzyme from 'chai-enzyme'
 
-import Tile from '../src/components/tile';
+import Tile from '../../src/components/tile';
 
 chai.use(chaiEnzyme());
 
 describe('Tile', () => {
-	it('should contain a single <p> element', () => {
+	it('should render a single <div> container', () => {
 	    const wrapper = shallow(<Tile/>);
-	    chai.expect(wrapper.find('p')).to.have.length.of(0);
+	    chai.expect(wrapper.find('.tile')).to.have.length.of(1);
 	});
 });

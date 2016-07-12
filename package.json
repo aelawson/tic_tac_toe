@@ -8,7 +8,7 @@
     "test": "test"
   },
   "scripts": {
-    "test": "mocha test/util/browser.js test/*.spec.js test/actions/*.spec.js test/reducers/*.spec.js --compilers css:test/util/css-null-compiler.js",
+    "test": "mocha --require test/util/browser.js test/components/*.spec.js test/actions/*.spec.js test/reducers/*.spec.js --compilers css:test/util/css-null-compiler.js",
     "dev-watch": "webpack -d --watch",
     "dev": "webpack -d",
     "build": "webpack -p"
@@ -26,6 +26,7 @@
   "devDependencies": {
     "babel-cli": "^6.10.1",
     "babel-loader": "^6.2.4",
+    "babel-plugin-lodash": "^3.2.0",
     "babel-plugin-transform-decorators-legacy": "^1.3.4",
     "babel-polyfill": "^6.9.1",
     "babel-preset-es2015": "^6.9.0",
@@ -35,6 +36,7 @@
     "css-loader": "^0.23.1",
     "enzyme": "^2.4.1",
     "jsdom": "^9.4.1",
+    "lodash": "^4.13.1",
     "mocha": "^2.5.3",
     "react-addons-test-utils": "^15.2.1",
     "react-redux": "^4.4.5",

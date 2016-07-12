@@ -9,26 +9,12 @@ export default class Board extends React.Component {
 			<div id="board">
 				{
 					// Generate tiles for board.
-					this.props.board.map((index) => {
+					this.props.board.map((tileId) => {
 						return (
-							<Tile/>
-						);
-					})
-				}
-			</div>
-		);
-	}
-}
-
-export default class Board extends React.Component {
-	render() {
-		return (
-			<div id="board">
-				{
-					// Generate tiles for board.
-					this.props.board.map((index) => {
-						return (
-							<Tile/>
+							<Tile
+								tileId = {tileId}
+								key = {tileId}
+							/>
 						);
 					})
 				}
