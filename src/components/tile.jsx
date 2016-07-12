@@ -11,17 +11,14 @@ export default class Tile extends React.Component {
 		return (
 			<div
 				className="tile"
-				onClick={this.handleClick.bind(this)}
+				onClick={this.onClick.bind(this)}
 				style={tileStyle}
 			>
 			</div>
 		);
 	}
 
-	handleClick() {
-		console.log("In handleClick (Tile)");
-		console.log(this.props.currentPlayer);
-		//this.props.makeMove(this.props.tileId, this.props.currentPlayer);
-		console.log("Made move");
+	onClick() {
+		this.props.makeMove(this.props.tileId, this.props.currentPlayer);
 	}
 }

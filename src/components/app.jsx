@@ -2,7 +2,7 @@ import React from 'react';
 import Board from './board';
 import Info from './info';
 import { connect } from 'react-redux';
-import actions from '../actions/actions';
+import { makeMove, resetBoard, newGame } from '../actions/actions';
 
 export class App extends React.Component {
 	render() {
@@ -43,5 +43,9 @@ export default connect(
 			gameInfo: state
 		};
 	},
-	{ actions }
+	{
+		makeMove,
+		resetBoard,
+		newGame
+	}
 )(App);
