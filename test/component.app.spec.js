@@ -11,7 +11,7 @@ import App from '../src/components/app';
 chai.use(chaiEnzyme());
 
 describe('App', () => {
-	it('should contain a single Info component', () => {
+	it('should render a single Info component', () => {
 		const store = createStore(reducer);
 		const wrapper = mount(
 			<Provider store={store}>
@@ -21,7 +21,7 @@ describe('App', () => {
 	    chai.expect(wrapper.find('Info')).to.have.length.of(1);
 	});
 
-	it('should contain a single Board component', () => {
+	it('should render a single Board component', () => {
 		const store = createStore(reducer);
 		const wrapper = mount(
 			<Provider store={store}>

@@ -2,7 +2,7 @@ import * as ActionTypes from '../constants/actiontypes';
 import * as GameTypes from '../constants/gametypes';
 import _ from 'lodash';
 
-const initialState = {
+export const initialState = {
 	board: [[]],
 	boardDim: 0,
 	currentMatch: 0,
