@@ -14,6 +14,7 @@ export default class Tile extends React.Component {
 				onClick={this.onClick.bind(this)}
 				style={tileStyle}
 			>
+				<span>{ this.props.currentPlayer }</span>
 			</div>
 		);
 	}
