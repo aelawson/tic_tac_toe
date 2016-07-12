@@ -3,8 +3,8 @@ import { shallow } from 'enzyme';
 import chai from 'chai';
 import chaiEnzyme from 'chai-enzyme'
 
-import Board from '../src/components/board';
-import { initialState, createBoard } from '../src/reducers/reducer';
+import Board from '../../src/components/board';
+import { initialState, createBoard } from '../../src/reducers/reducer';
 
 chai.use(chaiEnzyme());
 
