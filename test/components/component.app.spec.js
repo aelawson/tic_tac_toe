@@ -4,9 +4,9 @@ import chaiEnzyme from 'chai-enzyme';
 import { shallow, mount } from 'enzyme';
 import { Provider } from 'react-redux';
 import { createStore } from 'redux';
-import reducer from '../src/reducers/reducer';
+import reducer from '../../src/reducers/reducer';
 
-import App from '../src/components/app';
+import App from '../../src/components/app';
 
 chai.use(chaiEnzyme());
 
