@@ -4,6 +4,7 @@ import chai from 'chai';
 import chaiEnzyme from 'chai-enzyme'
 
 import Board from '../../src/components/board';
+import { getTileSize } from '../../src/components/board';
 import { initialState, createBoard } from '../../src/reducers/reducer';
 
 chai.use(chaiEnzyme());
@@ -35,5 +36,11 @@ describe('Board', () => {
 			/>
 	    );
 	    chai.expect(wrapper.find('Tile')).to.have.length.of(n);
+	});
+
+	it('should get a tile size of "n"', () => {
+		const expectedTileSize = 340 / 7;
+		const actualTileSize = getTileSize(7);
+	    chai.expect(actualTileSize).to.equal(expectedTileSize);
 	});
 });

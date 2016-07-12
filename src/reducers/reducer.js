@@ -3,8 +3,8 @@ import * as GameTypes from '../constants/gametypes';
 import _ from 'lodash';
 
 export const initialState = {
-	board: [0,1,2,3,4,5,6,7,8,9],
-	boardDim: 0,
+	board: createBoard(3),
+	boardDim: 3,
 	currentMatch: 0,
 	numMatches: 0,
 	currentPlayer: GameTypes.PLAYER_ONE,
@@ -12,10 +12,11 @@ export const initialState = {
 };
 
 export function createBoard(boardDim) {
-	var rows = new Array(boardDim);
-	for (var i = 0; i < boardDim; i++) {
+	const flatSize = boardDim * boardDim;
+	var rows = new Array(flatSize);
+	for (var i = 0; i < flatSize; i++) {
 		// Add array of size 'boardDim' to represent cols.
-		rows[i] = new Array(boardDim);
+		rows[i] = i;
 	}
 	return rows;
 }

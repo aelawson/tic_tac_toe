@@ -27,6 +27,7 @@ export class App extends React.Component {
 				/>
 				<Board
 					board = {board}
+					boardDim = {boardDim}
 					currentPlayer = {currentPlayer}
 					makeMove = {makeMove}
 					resetBoard = {resetBoard}
