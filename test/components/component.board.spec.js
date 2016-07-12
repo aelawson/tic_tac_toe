@@ -22,7 +22,7 @@ describe('Board', () => {
 	    chai.expect(wrapper.find('#board')).to.have.length.of(1);
 	});
 
-	it('should render "n" Tiles components', () => {
+	it('should render "n" Tile components', () => {
 		const n = 10;
 		const board = createBoard(n);
 	    const wrapper = shallow(
