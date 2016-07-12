@@ -14,6 +14,7 @@ export default class Board extends React.Component {
 							<Tile
 								tileId = {tileId}
 								key = {tileId}
+								makeMove = {this.props.makeMove}
 							/>
 						);
 					})
