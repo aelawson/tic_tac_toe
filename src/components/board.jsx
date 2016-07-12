@@ -3,17 +3,29 @@ import Tile from './tile';
 
 require('./css/board.css');
 
+export function getTileSize(boardDim) {
+	var marginSize = 10;
+	var boardSize = 500;
+	var remSpace = boardSize - (boardDim * (marginSize * 2))
+	var tileSize = remSpace / boardDim;
+	return tileSize;
+};
+
 export default class Board extends React.Component {
 	render() {
+		console.log(this.props.boardDim);
+		const tileSize = getTileSize(this.props.boardDim);
+		console.log(tileSize);
 		return (
 			<div id="board">
 				{
 					// Generate tiles for board.
-					this.props.board.map((tileId) => {
+					this.props.board.map((index) => {
 						return (
 							<Tile
-								tileId = {tileId}
-								key = {tileId}
+								key = {index}
+								tileId = {index}
+								tileSize = {tileSize}
 							/>
 						);
 					})
