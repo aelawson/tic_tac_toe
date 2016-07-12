@@ -13,9 +13,7 @@ export function getTileSize(boardDim) {
 
 export default class Board extends React.Component {
 	render() {
-		console.log(this.props.boardDim);
 		const tileSize = getTileSize(this.props.boardDim);
-		console.log(tileSize);
 		return (
 			<div id="board">
 				{
@@ -26,6 +24,8 @@ export default class Board extends React.Component {
 								key = {index}
 								tileId = {index}
 								tileSize = {tileSize}
+								currentPlayer = {this.props.currentPlayer}
+								makeMove = {this.props.makeMove}
 							/>
 						);
 					})

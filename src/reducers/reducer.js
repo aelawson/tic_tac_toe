@@ -21,11 +21,19 @@ export function createBoard(boardDim) {
 	return rows;
 }
 
+export function togglePlayer(player) {
+	if (player == GameTypes.PLAYER_ONE) {
+		return GameTypes.PLAYER_TWO;
+	}
+	return GameTypes.PLAYER_ONE;
+}
+
 export function isWinner(board, player) {
 	return GameTypes.NOT_WINNER;
 }
 
-export default function gameInfo(state=initialState, action) {
+export default function reducer(state=initialState, action) {
+	console.log("In reducer");
 	switch(action.type) {
 		case ActionTypes.MAKE_MOVE:
 			// Update board state (deep clone, immutable states).
@@ -35,9 +43,9 @@ export default function gameInfo(state=initialState, action) {
 			board[tileId] = player;
 			// See if the current player is a winner.
 			return {
-				board: board,
+				board: state.board,
 				boardDim: state.boardDim,
-				currentPlayer: state.currentPlayer,
+				currentPlayer: togglePlayer(state.currentPlayer),
 				currentMatch: state.currentMatch,
 				numMatches: state.numMatches,
 				matchStatus: isWinner(board, player)
