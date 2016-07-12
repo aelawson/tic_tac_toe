@@ -3,7 +3,7 @@ import * as GameTypes from '../constants/gametypes';
 import _ from 'lodash';
 
 export const initialState = {
-	board: [[]],
+	board: [0,1,2,3,4,5,6,7,8,9],
 	boardDim: 0,
 	currentMatch: 0,
 	numMatches: 0,
