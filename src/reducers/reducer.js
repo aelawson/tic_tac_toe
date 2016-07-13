@@ -1,35 +1,16 @@
 import * as ActionTypes from '../constants/actiontypes';
 import * as GameTypes from '../constants/gametypes';
+import * as helpers from './helpers';
 import _ from 'lodash';
 
 export const initialState = {
-	board: createBoard(3),
+	board: helpers.createBoard(3),
 	boardDim: 3,
 	currentMatch: 0,
 	numMatches: 0,
 	currentPlayer: GameTypes.PLAYER_ONE,
 	matchStatus: GameTypes.NOT_WINNER
 };
-
-export function createBoard(boardDim) {
-	const flatSize = boardDim * boardDim;
-	var rows = new Array(flatSize);
-	for (var i = 0; i < flatSize; i++) {
-		rows[i] = null;
-	}
-	return rows;
-}
-
-export function togglePlayer(player) {
-	if (player == GameTypes.PLAYER_ONE) {
-		return GameTypes.PLAYER_TWO;
-	}
-	return GameTypes.PLAYER_ONE;
-}
-
-export function isWinner(board, player) {
-	return GameTypes.NOT_WINNER;
-}
 
 export default function reducer(state=initialState, action) {
 	switch(action.type) {
@@ -39,22 +20,24 @@ export default function reducer(state=initialState, action) {
 			const player = action.payload.player;
 			const board = _.cloneDeep(state.board);
 			board[tileId] = player;
+			const matchStatus = helpers.isWinner(board, state.boardDim, tileId, player)
 			// See if the current player is a winner.
 			console.log(board);
+			console.log(matchStatus);
 			return {
 				board: board,
 				boardDim: state.boardDim,
-				currentPlayer: togglePlayer(state.currentPlayer),
+				currentPlayer: helpers.togglePlayer(state.currentPlayer),
 				currentMatch: state.currentMatch,
 				numMatches: state.numMatches,
-				matchStatus: isWinner(board, player)
+				matchStatus: matchStatus
 			};
 		case ActionTypes.RESET_BOARD:
 			// Return new board with same dimensions as before.
 			return {
-				board: createBoard(state.boardDim),
+				board: helpers.createBoard(state.boardDim),
 				boardDim: state.boardDim,
-				currentPlayer: togglePlayer(state.currentPlayer),
+				currentPlayer: helpers.togglePlayer(state.currentPlayer),
 				currentMatch: state.currentMatch + 1,
 				numMatches: state.numMatches,
 				matchStatus: GameTypes.NOT_WINNER
@@ -62,9 +45,9 @@ export default function reducer(state=initialState, action) {
 		case ActionTypes.NEW_GAME:
 			// Let player choose new game settings.
 			return {
-				board: createBoard(action.boardDim),
+				board: helpers.createBoard(action.boardDim),
 				boardDim: action.boardDim,
-				currentPlayer: togglePlayer(state.currentPlayer),
+				currentPlayer: helpers.togglePlayer(state.currentPlayer),
 				currentMatch: 1,
 				numMatches: action.numMatches,
 				matchStatus: GameTypes.NOT_WINNER
