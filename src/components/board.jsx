@@ -18,12 +18,13 @@ export default class Board extends React.Component {
 			<div id="board">
 				{
 					// Generate tiles for board.
-					this.props.board.map((index) => {
+					this.props.board.map((value, index) => {
 						return (
 							<Tile
 								key = {index}
 								tileId = {index}
 								tileSize = {tileSize}
+								value = {value}
 								currentPlayer = {this.props.currentPlayer}
 								makeMove = {this.props.makeMove}
 							/>

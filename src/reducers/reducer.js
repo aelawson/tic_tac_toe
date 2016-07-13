@@ -15,8 +15,7 @@ export function createBoard(boardDim) {
 	const flatSize = boardDim * boardDim;
 	var rows = new Array(flatSize);
 	for (var i = 0; i < flatSize; i++) {
-		// Add array of size 'boardDim' to represent cols.
-		rows[i] = i;
+		rows[i] = null;
 	}
 	return rows;
 }
@@ -33,7 +32,6 @@ export function isWinner(board, player) {
 }
 
 export default function reducer(state=initialState, action) {
-	console.log("In reducer");
 	switch(action.type) {
 		case ActionTypes.MAKE_MOVE:
 			// Update board state (deep clone, immutable states).
@@ -42,8 +40,9 @@ export default function reducer(state=initialState, action) {
 			const board = _.cloneDeep(state.board);
 			board[tileId] = player;
 			// See if the current player is a winner.
+			console.log(board);
 			return {
-				board: state.board,
+				board: board,
 				boardDim: state.boardDim,
 				currentPlayer: togglePlayer(state.currentPlayer),
 				currentMatch: state.currentMatch,
@@ -55,7 +54,7 @@ export default function reducer(state=initialState, action) {
 			return {
 				board: createBoard(state.boardDim),
 				boardDim: state.boardDim,
-				currentPlayer: state.currentPlayer,
+				currentPlayer: togglePlayer(state.currentPlayer),
 				currentMatch: state.currentMatch + 1,
 				numMatches: state.numMatches,
 				matchStatus: GameTypes.NOT_WINNER
@@ -65,7 +64,7 @@ export default function reducer(state=initialState, action) {
 			return {
 				board: createBoard(action.boardDim),
 				boardDim: action.boardDim,
-				currentPlayer: action.currentPlayer,
+				currentPlayer: togglePlayer(state.currentPlayer),
 				currentMatch: 1,
 				numMatches: action.numMatches,
 				matchStatus: GameTypes.NOT_WINNER
