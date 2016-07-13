@@ -9,19 +9,28 @@ export function setTileValue(value) {
 	return "";
 }
 
+export function setTileClickable(context, value) {
+	if (value != null) {
+		return () => { "return false" };
+	}
+	return context.onClick.bind(context);
+}
+
 export default class Tile extends React.Component {
 	render() {
-		const tileStyle = {
+		const tileSize = {
 			width: this.props.tileSize + "px",
 			height: this.props.tileSize + "px"
 		};
+		const tileClickEvent = setTileClickable(this, this.props.value);
+		const tileValue = setTileValue(this.props.value);
 		return (
 			<div
 				className="tile"
-				onClick={this.onClick.bind(this)}
-				style={tileStyle}
+				onClick={tileClickEvent}
+				style={tileSize}
 			>
-				<span className="tileValue">{setTileValue(this.props.value)}</span>
+				<span className="tileValue">{tileValue}</span>
 			</div>
 		);
 	}

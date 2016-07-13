@@ -1,7 +1,6 @@
 import * as ActionTypes from '../constants/actiontypes';
 
 export function makeMove(tileId, player) {
-	console.log("In makeMove()");
 	return {
 		type: ActionTypes.MAKE_MOVE,
 		payload: { 
