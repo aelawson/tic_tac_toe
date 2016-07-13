@@ -9,7 +9,7 @@ export const initialState = {
 	currentMatch: 0,
 	numMatches: 0,
 	currentPlayer: GameTypes.PLAYER_ONE,
-	matchStatus: GameTypes.NOT_WINNER
+	matchStatus: GameTypes.NEW_GAME
 };
 
 export default function reducer(state=initialState, action) {
@@ -45,11 +45,11 @@ export default function reducer(state=initialState, action) {
 		case ActionTypes.NEW_GAME:
 			// Let player choose new game settings.
 			return {
-				board: helpers.createBoard(action.boardDim),
-				boardDim: action.boardDim,
+				board: helpers.createBoard(action.payload.boardDim),
+				boardDim: action.payload.boardDim,
 				currentPlayer: helpers.togglePlayer(state.currentPlayer),
 				currentMatch: 1,
-				numMatches: action.numMatches,
+				numMatches: action.payload.numMatches,
 				matchStatus: GameTypes.NOT_WINNER
 			};
 		default:

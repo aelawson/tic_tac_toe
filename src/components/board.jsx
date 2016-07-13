@@ -4,11 +4,11 @@ import * as GameTypes from '../constants/gametypes';
 
 require('./css/board.css');
 
-const hideEndGame = {
+const hideOverlay = {
 	display: "none"
 };
 
-const showEndGame = {
+const showOverlay = {
 	display: "block"
 };
 
@@ -20,35 +20,47 @@ export function getTileSize(boardDim) {
 	return tileSize;
 };
 
-export function setEndGameStyle(matchStatus) {
+export function setStartGameOverlay(matchStatus) {
+	if (matchStatus === GameTypes.NEW_GAME) {
+		return showOverlay;
+	}
+	return hideOverlay;
+};
+
+export function setEndGameOverlay(matchStatus) {
 	if (matchStatus === GameTypes.WINNER) {
-		return showEndGame;
+		return showOverlay;
 	}
 	if (matchStatus === GameTypes.DRAW) {
-		return showEndGame;
+		return showOverlay;
 	}
-	return hideEndGame;
+	return hideOverlay;
 };
 
 export default class Board extends React.Component {
 	render() {
 		const tileSize = getTileSize(this.props.boardDim);
-		//const startGameStyle = setstartGameStyle(this.props.matchStatus);
-		const endGameStyle = setEndGameStyle(this.props.matchStatus);
+		const startGameStyle = setStartGameOverlay(this.props.matchStatus);
+		const endGameStyle = setEndGameOverlay(this.props.matchStatus);
 		return (
 			<div id="board">
-				<div
-					id = "endGameScreen"
-					style = {endGameStyle}
-				>
-					<div id = "endGameInfo">
+				<div className="gameOverlay" style={startGameStyle}>
+					<div className="gameOverlayInfo">
+						<h2>
+							Welcome to Tic-Tac-Toe!
+						</h2>
+						<button onClick={this.onClickNewGame.bind(this)}>
+							New Game
+						</button>
+					</div>
+				</div>
+				<div className="gameOverlay" style={endGameStyle}>
+					<div className="gameOverlayInfo">
 						<h2>
 							{this.props.matchStatus}
 						</h2>
-						<button
-							onClick = {this.props.resetBoard}
-						>
-							New Game
+						<button onClick={this.props.resetBoard}>
+							Reset Board
 						</button>
 					</div>
 				</div>
@@ -69,5 +81,9 @@ export default class Board extends React.Component {
 				}
 			</div>
 		);
+	}
+
+	onClickNewGame() {
+		this.props.newGame(3, 3);
 	}
 }

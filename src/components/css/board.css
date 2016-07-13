@@ -6,7 +6,7 @@
 	padding: 10px;
 }
 
-#endGameScreen {
+.gameOverlay {
 	position: absolute;
 	top: 0;
 	bottom: 0;
@@ -17,10 +17,10 @@
 	text-align: center;
 }
 
-#endGameScreen h2 {
+.gameOverlayInfo h2 {
 	color: white;
 }
 
-#endGameInfo {
-	margin: auto;
+.gameOverlayInfo {
+	margin-top: 250px;
 }
