@@ -2,11 +2,11 @@ import React from 'react';
 
 require('./css/tile.css');
 
-export function setTileValue(value, player) {
-	if (value == null) {
-		return player;
+export function setTileValue(value) {
+	if (value != null) {
+		return value;
 	}
-	return value;
+	return "";
 }
 
 export default class Tile extends React.Component {
@@ -21,7 +21,7 @@ export default class Tile extends React.Component {
 				onClick={this.onClick.bind(this)}
 				style={tileStyle}
 			>
-				<span>{ setTileValue(this.props.value, this.props.currentPlayer) }</span>
+				<span className="tileValue">{setTileValue(this.props.value)}</span>
 			</div>
 		);
 	}

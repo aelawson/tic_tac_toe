@@ -24,8 +24,8 @@ export default class Board extends React.Component {
 								key = {index}
 								tileId = {index}
 								tileSize = {tileSize}
-								value = {value}
 								currentPlayer = {this.props.currentPlayer}
+								value = {value}
 								makeMove = {this.props.makeMove}
 							/>
 						);
