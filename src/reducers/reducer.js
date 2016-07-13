@@ -4,8 +4,8 @@ import * as helpers from './helpers';
 import _ from 'lodash';
 
 export const initialState = {
-	board: helpers.createBoard(3),
-	boardDim: 3,
+	board: helpers.createBoard(5),
+	boardDim: 5,
 	currentMatch: 0,
 	numMatches: 0,
 	currentPlayer: GameTypes.PLAYER_ONE,

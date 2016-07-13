@@ -38,12 +38,19 @@ export default class Board extends React.Component {
 		return (
 			<div id="board">
 				<div
-					id="endGameScreen"
-					style={endGameStyle}
+					id = "endGameScreen"
+					style = {endGameStyle}
 				>
-					<h2>
-						{this.props.matchStatus}
-					</h2>
+					<div id = "endGameInfo">
+						<h2>
+							{this.props.matchStatus}
+						</h2>
+						<button
+							onClick = {this.props.resetBoard}
+						>
+							New Game
+						</button>
+					</div>
 				</div>
 				{
 					// Generate tiles for board.
