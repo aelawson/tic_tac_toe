@@ -19,7 +19,6 @@ export function togglePlayer(player) {
 export function checkRow(board, boardDim, tileId, player) {
 	const colStart = Math.floor(tileId / boardDim) * boardDim;
 	const colEnd = colStart + boardDim;
-	console.log("Checking row");
 	for (var col = colStart; col < colEnd; col++) {
 		if (board[col] !== player) {
 			return false;
@@ -31,7 +30,6 @@ export function checkRow(board, boardDim, tileId, player) {
 export function checkCol(board, boardDim, tileId, player) {
 	const rowStart = tileId % boardDim;
 	const rowEnd = boardDim * boardDim;
-	console.log("Checking col");
 	for (var row = rowStart; row < rowEnd; row += boardDim) {
 		if (board[row] !== player) {
 			return false;
@@ -85,13 +83,11 @@ export function isWinner(board, boardDim, tileId, player) {
 	}
 	if (onDiag(tileId, boardDim)) {
 		if (checkDiag(board, boardDim, player)) {
-			console.log("Diag winner");
 			return GameTypes.WINNER;
 		}	
 	}
 	if (onRevDiag(tileId, boardDim)) {
 		if (checkRevDiag(board, boardDim, player)) {
-			console.log("Rev diag winner");
 			return GameTypes.WINNER;
 		}
 	}

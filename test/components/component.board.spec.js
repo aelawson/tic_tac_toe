@@ -6,6 +6,7 @@ import chaiEnzyme from 'chai-enzyme'
 import Board from '../../src/components/board';
 import { getTileSize } from '../../src/components/board';
 import { initialState, createBoard } from '../../src/reducers/reducer';
+import * as helpers from '../../src/reducers/helpers';
 
 chai.use(chaiEnzyme());
 
@@ -25,7 +26,7 @@ describe('Board', () => {
 
 	it('should render "n * n" Tile components', () => {
 		const n = 10;
-		const board = createBoard(n);
+		const board = helpers.createBoard(n);
 	    const wrapper = shallow(
 			<Board
 				board = {board}
