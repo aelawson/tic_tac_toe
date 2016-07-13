@@ -1,4 +1,5 @@
 import React from 'react';
+import { reduxForm } from 'redux-form'
 import Tile from './tile';
 import * as GameTypes from '../constants/gametypes';
 
@@ -49,9 +50,19 @@ export default class Board extends React.Component {
 						<h2>
 							Welcome to Tic-Tac-Toe!
 						</h2>
-						<button onClick={this.onClickNewGame.bind(this)}>
-							New Game
-						</button>
+						<form>
+							<div>
+								<label>Board Size</label>
+								<div>
+									<input type="text" placeholder="Default is 3..."/>
+								</div>
+							</div>
+							<div>
+								<button onClick={this.onClickNewGame.bind(this)}>
+									New Game
+								</button>
+							</div>
+						</form>
 					</div>
 				</div>
 				<div className="gameOverlay" style={endGameStyle}>
@@ -85,5 +96,9 @@ export default class Board extends React.Component {
 
 	onClickNewGame() {
 		this.props.newGame(3, 3);
+	}
+
+	onInputChange() {
+		this
 	}
 }
