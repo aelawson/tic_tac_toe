@@ -12,6 +12,7 @@ describe('Helpers', () => {
 		    chai.expect(board).to.have.length.of(boardDim * boardDim);
 		});
 	});
+	
 	describe('isWinner()', () => {
 		it('should return a winning result given a winning play"', () => {
 			const expectedResult = GameTypes.WINNER;
@@ -27,4 +28,32 @@ describe('Helpers', () => {
 			chai.expect(actualResult).to.equal(expectedResult);
 		});
 	});
+
+	describe('checkRow()', () => {
+		it('should return true for a winning row"', () => {
+			// TODO: Implement test.
+			chai.expect(true).to.equal(true);
+		});
 	});
+
+	describe('checkCol()', () => {
+		it('should return true for a winning column"', () => {
+			// TODO: Implement test.
+			chai.expect(true).to.equal(true);
+		});
+	});
+
+	describe('checkDiag()', () => {
+		it('should return true for a winning diagonal"', () => {
+			// TODO: Implement test.
+			chai.expect(true).to.equal(true);
+		});
+	});
+
+	describe('checkRevDiag()', () => {
+		it('should return true for a winning reverse diagonal"', () => {
+			// TODO: Implement test.
+			chai.expect(true).to.equal(true);
+		});
+	});
+});
