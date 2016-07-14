@@ -50,11 +50,10 @@ describe('Actions', () => {
 			const expectedResult = {
 				type: ActionTypes.NEW_GAME,
 				payload: {
-					boardDim: null,
-					numMatches: null
+					boardDim: null
 				}
 			};
-			const actionResult = actions.newGame(null, null);
+			const actionResult = actions.newGame(null);
 			chai.expect(actionResult).to.deep.equal(expectedResult);
 		});
 	});

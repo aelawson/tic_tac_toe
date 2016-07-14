@@ -26,13 +26,12 @@ describe('Info', () => {
 			<Info
 				currentPlayer = {initialState.currentPlayer}
 				currentMatch = {initialState.currentMatch}
-				numMatches = {initialState.numMatches}
 			/>
 	    );
 	    chai.expect(wrapper.find('h1')).to.have.length.of(1);
 	});
 
-	it('should render three <h4> elements (props)', () => {
+	it('should render two <h4> elements (props)', () => {
 	    const wrapper = shallow(
 			<Info
 				currentPlayer = {initialState.currentPlayer}
@@ -40,20 +39,18 @@ describe('Info', () => {
 				numMatches = {initialState.numMatches}
 			/>
 	    );
-	    chai.expect(wrapper.find('h4')).to.have.length.of(3);
+	    chai.expect(wrapper.find('h4')).to.have.length.of(2);
 	});
 
-	it('should have defined "currentPlayer", "currentMatch", and "numMatches" props', () => {
+	it('should have defined "currentPlayer" and "currentMatch" props', () => {
 	    const wrapper = mount(
 			<Info
 				currentPlayer = {initialState.currentPlayer}
 				currentMatch = {initialState.currentMatch}
-				numMatches = {initialState.numMatches}
 			/>
 	    );
 	    chai.expect(wrapper.props().currentPlayer).to.not.be.undefined;
 	    chai.expect(wrapper.props().currentMatch).to.not.be.undefined;
-	    chai.expect(wrapper.props().numMatches).to.not.be.undefined;
 	});
 
 	it('should have "currentPlayer" prop equal to "X"', () => {
@@ -61,7 +58,6 @@ describe('Info', () => {
 			<Info
 				currentPlayer = {initialState.currentPlayer}
 				currentMatch = {initialState.currentMatch}
-				numMatches = {initialState.numMatches}
 			/>
 	    );
 	    chai.expect(wrapper.props().currentPlayer).to.equal(GameTypes.PLAYER_ONE);
@@ -72,20 +68,8 @@ describe('Info', () => {
 			<Info
 				currentPlayer = {initialState.currentPlayer}
 				currentMatch = {initialState.currentMatch}
-				numMatches = {initialState.numMatches}
 			/>
 	    );
 	    chai.expect(wrapper.props().currentMatch).to.equal(0);
-	});
-
-	it('should have "numMatches" prop equal to 0', () => {
-	    const wrapper = mount(
-			<Info
-				currentPlayer = {initialState.currentPlayer}
-				currentMatch = {initialState.currentMatch}
-				numMatches = {initialState.numMatches}
-			/>
-	    );
-	    chai.expect(wrapper.props().numMatches).to.equal(0);
 	});
 });

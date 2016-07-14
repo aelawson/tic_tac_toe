@@ -4,8 +4,8 @@ import chai from 'chai';
 import chaiEnzyme from 'chai-enzyme'
 
 import Board from '../../src/components/board';
-import { getTileSize } from '../../src/components/board';
 import { initialState } from '../../src/helpers/reducerhelpers';
+import { getTileSize } from '../../src/helpers/componenthelpers';
 import * as Helpers from '../../src/helpers/reducerhelpers';
 
 chai.use(chaiEnzyme());
