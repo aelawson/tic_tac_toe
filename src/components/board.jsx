@@ -113,6 +113,6 @@ export default class Board extends React.Component {
 	}
 
 	onInputChange(event) {
-		this.setState({inputValue: event.target.value});
+		this.setState({inputValue: parseInt(event.target.value)});
 	}
 }

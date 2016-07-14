@@ -17,12 +17,11 @@ export function resetBoard() {
 	};
 }
 
-export function newGame(boardDim, numMatches) {
+export function newGame(boardDim) {
 	return {
 		type: ActionTypes.NEW_GAME,
 		payload: { 
-			boardDim: boardDim,
-			numMatches: numMatches
+			boardDim: boardDim
 		}
 	};
 }

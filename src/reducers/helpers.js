@@ -42,7 +42,7 @@ export function checkDiag(board, boardDim, player) {
 	const diagIncr = boardDim + 1;
 	const diagStart = 0;
 	for (var i = diagStart; i < board.length; i += diagIncr) {
-		if (board[i] != player) {
+		if (board[i] !== player) {
 			return false;
 		}
 	}
@@ -53,7 +53,7 @@ export function checkRevDiag(board, boardDim, player) {
 	const diagIncr = boardDim - 1;
 	const diagStart = board.length - boardDim;
 	for (var i = diagStart; i >= boardDim - 1; i -= diagIncr) {
-		if (board[i] != player) {
+		if (board[i] !== player) {
 			return false;
 		}
 	}
@@ -63,17 +63,17 @@ export function checkRevDiag(board, boardDim, player) {
 export function onDiag(tileId, boardDim) {
 	const rowIndex = Math.floor(tileId / boardDim);
 	const colIndex = tileId % boardDim;
-	return (rowIndex == colIndex);
+	return (rowIndex === colIndex);
 }
 
 export function onRevDiag(tileId, boardDim) {
 	const rowIndex = Math.floor(tileId / boardDim);
 	const colIndex = tileId % boardDim;
-	return (rowIndex + colIndex == boardDim - 1);
+	return (rowIndex + colIndex === boardDim - 1);
 }
 
 // Different than implementation in interview - found it easier to use a 1D array instead of 2D.
-export function isWinner(board, boardDim, tileId, player) {
+export function isWinner(board, boardDim, tileId, player, numMoves) {
 	// We know the last move has to be a winner or not, so we can just check
 	if (checkRow(board, boardDim, tileId, player)) {
 		return GameTypes.WINNER;
@@ -90,6 +90,10 @@ export function isWinner(board, boardDim, tileId, player) {
 		if (checkRevDiag(board, boardDim, player)) {
 			return GameTypes.WINNER;
 		}
+	}
+	// If we've filled all spaces and didn't find a win, it's a draw.
+	if (numMoves == board.length) {
+		return GameTypes.DRAW;
 	}
 	return GameTypes.NOT_WINNER;
 }

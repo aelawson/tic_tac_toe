@@ -7,7 +7,7 @@ export const initialState = {
 	board: helpers.createBoard(3),
 	boardDim: 3,
 	currentMatch: 0,
-	numMatches: 0,
+	numMoves: 0,
 	currentPlayer: GameTypes.PLAYER_ONE,
 	matchStatus: GameTypes.NEW_GAME
 };
@@ -20,7 +20,7 @@ export default function reducer(state=initialState, action) {
 			const player = action.payload.player;
 			const board = _.cloneDeep(state.board);
 			board[tileId] = player;
-			const matchStatus = helpers.isWinner(board, state.boardDim, tileId, player)
+			const matchStatus = helpers.isWinner(board, state.boardDim, tileId, player, state.numMoves)
 			// See if the current player is a winner.
 			console.log(board);
 			console.log(matchStatus);
@@ -29,7 +29,7 @@ export default function reducer(state=initialState, action) {
 				boardDim: state.boardDim,
 				currentPlayer: helpers.togglePlayer(state.currentPlayer),
 				currentMatch: state.currentMatch,
-				numMatches: state.numMatches,
+				numMoves: state.numMoves,
 				matchStatus: matchStatus
 			};
 		case ActionTypes.RESET_BOARD:
@@ -39,7 +39,7 @@ export default function reducer(state=initialState, action) {
 				boardDim: state.boardDim,
 				currentPlayer: helpers.togglePlayer(state.currentPlayer),
 				currentMatch: state.currentMatch + 1,
-				numMatches: state.numMatches,
+				numMoves: state.numMoves,
 				matchStatus: GameTypes.NOT_WINNER
 			};
 		case ActionTypes.NEW_GAME:
@@ -49,7 +49,7 @@ export default function reducer(state=initialState, action) {
 				boardDim: action.payload.boardDim,
 				currentPlayer: helpers.togglePlayer(state.currentPlayer),
 				currentMatch: 1,
-				numMatches: action.payload.numMatches,
+				numMoves: 0,
 				matchStatus: GameTypes.NOT_WINNER
 			};
 		default:
