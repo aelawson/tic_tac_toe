@@ -4,8 +4,8 @@ import * as helpers from './helpers';
 import _ from 'lodash';
 
 export const initialState = {
-	board: helpers.createBoard(3),
-	boardDim: 3,
+	board: helpers.createBoard(0),
+	boardDim: 0,
 	currentMatch: 0,
 	numMoves: 1,
 	currentPlayer: GameTypes.PLAYER_ONE,
@@ -37,7 +37,7 @@ export default function reducer(state=initialState, action) {
 			return {
 				board: helpers.createBoard(state.boardDim),
 				boardDim: state.boardDim,
-				currentPlayer: helpers.togglePlayer(state.currentPlayer),
+				currentPlayer: state.currentPlayer,
 				currentMatch: state.currentMatch + 1,
 				numMoves: 1,
 				matchStatus: GameTypes.NOT_WINNER
@@ -47,7 +47,7 @@ export default function reducer(state=initialState, action) {
 			return {
 				board: helpers.createBoard(action.payload.boardDim),
 				boardDim: action.payload.boardDim,
-				currentPlayer: helpers.togglePlayer(state.currentPlayer),
+				currentPlayer: state.currentPlayer,
 				currentMatch: 1,
 				numMoves: 1,
 				matchStatus: GameTypes.NOT_WINNER

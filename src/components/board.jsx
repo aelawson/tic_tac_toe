@@ -1,41 +1,8 @@
 import React from 'react';
 import Tile from './tile';
-import * as GameTypes from '../constants/gametypes';
+import * as Helpers from '../helpers/componenthelpers';
 
 require('./css/board.css');
-
-const hideOverlay = {
-	display: "none"
-};
-
-const showOverlay = {
-	display: "block"
-};
-
-export function getTileSize(boardDim) {
-	var marginSize = 10;
-	var boardSize = 500;
-	var remSpace = boardSize - (boardDim * (marginSize * 2))
-	var tileSize = remSpace / boardDim;
-	return tileSize;
-};
-
-export function setStartGameOverlay(matchStatus) {
-	if (matchStatus === GameTypes.NEW_GAME) {
-		return showOverlay;
-	}
-	return hideOverlay;
-};
-
-export function setEndGameOverlay(matchStatus) {
-	if (matchStatus === GameTypes.WINNER) {
-		return showOverlay;
-	}
-	if (matchStatus === GameTypes.DRAW) {
-		return showOverlay;
-	}
-	return hideOverlay;
-};
 
 export default class Board extends React.Component {
 	constructor(props) {
@@ -44,9 +11,9 @@ export default class Board extends React.Component {
 	}
 
 	render() {
-		const tileSize = getTileSize(this.props.boardDim);
-		const startGameStyle = setStartGameOverlay(this.props.matchStatus);
-		const endGameStyle = setEndGameOverlay(this.props.matchStatus);
+		const tileSize = Helpers.getTileSize(this.props.boardDim);
+		const startGameStyle = Helpers.setStartGameOverlay(this.props.matchStatus);
+		const endGameStyle = Helpers.setEndGameOverlay(this.props.matchStatus);
 		return (
 			<div id="board">
 				<div className="gameOverlay" style={startGameStyle}>
@@ -73,7 +40,7 @@ export default class Board extends React.Component {
 							{this.props.matchStatus}
 						</h2>
 						<button onClick={this.props.resetBoard}>
-							Reset Board
+							Rematch
 						</button>
 					</div>
 				</div>

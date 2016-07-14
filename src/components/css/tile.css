@@ -1,4 +1,5 @@
 .tile {
+	border-radius: 30px;
 	float: left;
 	margin: 10px;
 	background-color: #FFFFFF;

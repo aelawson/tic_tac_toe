@@ -1,4 +1,8 @@
+h1 {
+	font-family: 'Bangers', cursive;
+}
+
 h1, h4 {
-	color: white;
+	color: #610013;
 	text-align: center;
 }
