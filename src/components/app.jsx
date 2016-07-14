@@ -22,7 +22,6 @@ export class App extends React.Component {
 				<Info
 					currentPlayer = {currentPlayer}
 					currentMatch = {currentMatch}
-					numMatches = {numMatches}
 				/>
 				<Board
 					board = {board}

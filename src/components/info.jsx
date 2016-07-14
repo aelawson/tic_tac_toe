@@ -9,7 +9,6 @@ export default class Info extends React.Component {
 				<h1 id="title">Tic Tac Toe</h1>
 				<h4 id="currentPlayer">Current player: { this.props.currentPlayer }</h4>
 				<h4 id="currentMatch">Current match: { this.props.currentMatch }</h4>
-				<h4 id="numMatches">Num matches: { this.props.numMatches }</h4>
 			</div>
 		);
 	}
