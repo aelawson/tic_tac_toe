@@ -1,4 +1,5 @@
-export const PLAYER_ONE = 'X';
-export const PLAYER_TWO = 'O';
-export const WINNER = true;
-export const NOT_WINNER = false;
+export const PLAYER_ONE = "X";
+export const PLAYER_TWO = "O";
+export const WINNER = "WINNER";
+export const NOT_WINNER = "NOT WINNER";
+export const DRAW = "DRAW";

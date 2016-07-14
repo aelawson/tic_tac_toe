@@ -1,13 +1,9 @@
 import React from 'react';
 import Board from './board';
 import Info from './info';
-import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { makeMove, resetBoard, newGame } from '../actions/actions';
 
-// @connect(state => ({
-//     gameInfo: state.gameInfo
-// }))
 export class App extends React.Component {
 	render() {
 		const {
@@ -15,25 +11,26 @@ export class App extends React.Component {
 				board: board,
 				boardDim: boardDim,
 				currentMatch: currentMatch,
-				numMatches: numMatches,
-				currentPlayer: currentPlayer
+				numMoves: numMoves,
+				currentPlayer: currentPlayer,
+				matchStatus: matchStatus
 			},
 			dispatch
 		} = this.props;
-
 		return (
 			<div>
 				<Info
 					currentPlayer = {currentPlayer}
 					currentMatch = {currentMatch}
-					numMatches = {numMatches}
 				/>
 				<Board
 					board = {board}
+					boardDim = {boardDim}
 					currentPlayer = {currentPlayer}
-					makeMove = {makeMove}
-					resetBoard = {resetBoard}
-					newGame = {newGame}
+					makeMove = {this.props.makeMove}
+					resetBoard = {this.props.resetBoard}
+					matchStatus = {matchStatus}
+					newGame = {this.props.newGame}
 				/>
 			</div>
 		);
@@ -46,11 +43,9 @@ export default connect(
 			gameInfo: state
 		};
 	},
-	function mapDispatchToProps(dispatch) {
-		return {
-			makeMove: (tileId, player) => dispatch(makeMove(tileId, player)),
-			resetBoard: () => dispatch(resetBoard()),
-			newGame: (boardDim, numMatches) => dispatch(newGame(boardDim, numMatches))		
-		};
+	{
+		makeMove,
+		resetBoard,
+		newGame
 	}
 )(App);
