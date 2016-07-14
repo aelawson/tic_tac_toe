@@ -1,5 +1,4 @@
 import React from 'react';
-import { reduxForm } from 'redux-form'
 import Tile from './tile';
 import * as GameTypes from '../constants/gametypes';
 
@@ -39,6 +38,11 @@ export function setEndGameOverlay(matchStatus) {
 };
 
 export default class Board extends React.Component {
+	constructor(props) {
+		super(props);
+		this.state = { };
+	}
+
 	render() {
 		const tileSize = getTileSize(this.props.boardDim);
 		const startGameStyle = setStartGameOverlay(this.props.matchStatus);
@@ -50,19 +54,17 @@ export default class Board extends React.Component {
 						<h2>
 							Welcome to Tic-Tac-Toe!
 						</h2>
-						<form>
+						<div>
+							<label>Board Size</label>
 							<div>
-								<label>Board Size</label>
-								<div>
-									<input type="text" placeholder="Default is 3..."/>
-								</div>
+								<input type="number" min="3" max="10" value={this.state.inputValue} onChange={this.onInputChange.bind(this)}/>
 							</div>
-							<div>
-								<button onClick={this.onClickNewGame.bind(this)}>
-									New Game
-								</button>
-							</div>
-						</form>
+						</div>
+						<div>
+							<button onClick={this.onClickNewGame.bind(this)}>
+								New Game
+							</button>
+						</div>
 					</div>
 				</div>
 				<div className="gameOverlay" style={endGameStyle}>
@@ -94,11 +96,23 @@ export default class Board extends React.Component {
 		);
 	}
 
-	onClickNewGame() {
-		this.props.newGame(3, 3);
+	getInitialState() {
+		return {inputValue: this.props.boardDim};
 	}
 
-	onInputChange() {
-		this
+	onClickNewGame() {
+		if (this.state.inputValue < 3) {
+			alert("Please enter a value greater than 3 and less than 10.");
+		}
+		else if(this.state.inputValue > 10) {
+			alert("Please enter a value greater than 3 and less than 10.");
+		}
+		else{
+			this.props.newGame(this.state.inputValue, this.state.inputValue);
+		}
+	}
+
+	onInputChange(event) {
+		this.setState({inputValue: event.target.value});
 	}
 }
