@@ -11,7 +11,7 @@ export class App extends React.Component {
 				board: board,
 				boardDim: boardDim,
 				currentMatch: currentMatch,
-				numMatches: numMatches,
+				numMoves: numMoves,
 				currentPlayer: currentPlayer,
 				matchStatus: matchStatus
 			},

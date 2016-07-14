@@ -9,12 +9,8 @@ export default class Tile extends React.Component {
 		const tileClickEvent = Helpers.setTileClickable(this, this.props.value);
 		const tileIcon = Helpers.setTileIcon(this.props.value);
 		return (
-			<div
-				className="tile"
-				onClick={tileClickEvent}
-				style={tileStyle}
-			>
-				<span className={tileIcon}></span>
+			<div className="tile" onClick={tileClickEvent} style={tileStyle}>
+				<span className="tileValue">{tileIcon}</span>
 			</div>
 		);
 	}

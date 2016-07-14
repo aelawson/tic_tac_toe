@@ -1,5 +1,14 @@
 import * as GameTypes from '../constants/gametypes';
 
+export const initialState = {
+	board: createBoard(0),
+	boardDim: 0,
+	currentMatch: 0,
+	numMoves: 1,
+	currentPlayer: GameTypes.PLAYER_ONE,
+	matchStatus: GameTypes.NEW_GAME
+};
+
 export function createBoard(boardDim) {
 	const flatSize = boardDim * boardDim;
 	var rows = new Array(flatSize);
@@ -74,7 +83,8 @@ export function onRevDiag(tileId, boardDim) {
 
 // Different than implementation in interview - found it easier to use a 1D array instead of 2D.
 export function isWinner(board, boardDim, tileId, player, numMoves) {
-	// We know the last move has to be a winner or not, so we can just check
+	// We know the last move is either a winner or not,
+	// so we only need to check the row/col/diag intersecting that space.
 	if (checkRow(board, boardDim, tileId, player)) {
 		return GameTypes.WINNER;
 	}
