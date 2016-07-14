@@ -12,11 +12,11 @@ export class App extends React.Component {
 				boardDim: boardDim,
 				currentMatch: currentMatch,
 				numMatches: numMatches,
-				currentPlayer: currentPlayer
+				currentPlayer: currentPlayer,
+				matchStatus: matchStatus
 			},
 			dispatch
 		} = this.props;
-
 		return (
 			<div>
 				<Info
@@ -30,6 +30,7 @@ export class App extends React.Component {
 					currentPlayer = {currentPlayer}
 					makeMove = {this.props.makeMove}
 					resetBoard = {this.props.resetBoard}
+					matchStatus = {matchStatus}
 					newGame = {this.props.newGame}
 				/>
 			</div>
