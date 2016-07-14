@@ -7,7 +7,6 @@ import * as Helpers from '../helpers/componenthelpers';
 require('./css/board.css');
 
 export default class Board extends React.Component {
-
 	// Use local state for controlling input form.
 	constructor(props) {
 		super(props);
