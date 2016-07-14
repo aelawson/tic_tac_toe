@@ -5,7 +5,7 @@ import chaiEnzyme from 'chai-enzyme'
 
 import Info from '../../src/components/info';
 import * as GameTypes from '../../src/constants/gametypes';
-import { initialState } from '../../src/reducers/reducer';
+import { initialState } from '../../src/helpers/reducerhelpers';
 
 chai.use(chaiEnzyme());
 

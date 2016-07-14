@@ -1,5 +1,6 @@
 import React from 'react';
 import Tile from './tile';
+import { togglePlayer } from '../helpers/reducerhelpers';
 import * as Helpers from '../helpers/componenthelpers';
 
 require('./css/board.css');
@@ -37,7 +38,7 @@ export default class Board extends React.Component {
 				<div className="gameOverlay" style={endGameStyle}>
 					<div className="gameOverlayInfo">
 						<h2>
-							{this.props.matchStatus}
+							{togglePlayer(this.props.currentPlayer) + " WINS!"}
 						</h2>
 						<button onClick={this.props.resetBoard}>
 							Rematch
