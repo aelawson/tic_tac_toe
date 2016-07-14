@@ -10,6 +10,7 @@ export const initialState = {
 };
 
 export function createBoard(boardDim) {
+	// Create a 1D board of size boardDim * boardDim.
 	const flatSize = boardDim * boardDim;
 	var rows = new Array(flatSize);
 	for (var i = 0; i < flatSize; i++) {
@@ -26,6 +27,8 @@ export function togglePlayer(player) {
 }
 
 export function checkRow(board, boardDim, tileId, player) {
+	// Find flattened bounds of the row containing tileId.
+	// Iterate and return false if we find a non-matching value in the row - else return true.
 	const colStart = Math.floor(tileId / boardDim) * boardDim;
 	const colEnd = colStart + boardDim;
 	for (var col = colStart; col < colEnd; col++) {
@@ -37,6 +40,8 @@ export function checkRow(board, boardDim, tileId, player) {
 }
 
 export function checkCol(board, boardDim, tileId, player) {
+	// Find flattened bounds of the col containing tileId.
+	// Iterate and return false if we find a non-matching value in the col - else return true.
 	const rowStart = tileId % boardDim;
 	const rowEnd = boardDim * boardDim;
 	for (var row = rowStart; row < rowEnd; row += boardDim) {
@@ -48,6 +53,8 @@ export function checkCol(board, boardDim, tileId, player) {
 }
 
 export function checkDiag(board, boardDim, player) {
+	// Find flattened bounds of the diag containing tileId.
+	// Iterate and return false if we find a non-matching value in the diag - else return true;
 	const diagIncr = boardDim + 1;
 	const diagStart = 0;
 	for (var i = diagStart; i < board.length; i += diagIncr) {
@@ -59,6 +66,8 @@ export function checkDiag(board, boardDim, player) {
 }
 
 export function checkRevDiag(board, boardDim, player) {
+	// Find flattened bounds of the rev. diag containing tileId.
+	// Iterate and return false if we find a non-matching value in the rev. diag - else return true;
 	const diagIncr = boardDim - 1;
 	const diagStart = board.length - boardDim;
 	for (var i = diagStart; i >= boardDim - 1; i -= diagIncr) {
@@ -70,12 +79,14 @@ export function checkRevDiag(board, boardDim, player) {
 }
 
 export function onDiag(tileId, boardDim) {
+	// Check if row / col indices are the same - if so, we are in the diagonal.
 	const rowIndex = Math.floor(tileId / boardDim);
 	const colIndex = tileId % boardDim;
 	return (rowIndex === colIndex);
 }
 
 export function onRevDiag(tileId, boardDim) {
+	// Check if row / col indices add to (boardDim - 1) - if so, we are in the rev. diagonal.
 	const rowIndex = Math.floor(tileId / boardDim);
 	const colIndex = tileId % boardDim;
 	return (rowIndex + colIndex === boardDim - 1);
