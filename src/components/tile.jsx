@@ -10,7 +10,7 @@ export default class Tile extends React.Component {
 		const tileIcon = Helpers.setTileIcon(this.props.value);
 		return (
 			<div className="tile" onClick={tileClickEvent} style={tileStyle}>
-				<span className={tileIcon}></span>
+				<span className="tileValue">{tileIcon}</span>
 			</div>
 		);
 	}

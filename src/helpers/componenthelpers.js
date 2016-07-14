@@ -28,11 +28,12 @@ export function setEndGameOverlay(matchStatus) {
 
 export function setTileIcon(value) {
 	if (value != null) {
-		console.log(value);
 		if (value === GameTypes.PLAYER_ONE) {
-			return "fa-times";
+			//return "fa-times";
+			return GameTypes.PLAYER_ONE;
 		}
-		return "fa-circle-o";
+		//return "fa-circle-o";
+		return GameTypes.PLAYER_TWO;
 	}
 	return "";
 }
