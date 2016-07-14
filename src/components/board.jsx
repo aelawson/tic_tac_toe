@@ -74,7 +74,7 @@ export default class Board extends React.Component {
 		if (typeof this.state.inputValue === "undefined" || this.state.inputValue < 3 || this.state.inputValue > 10) {
 			alert("Please enter a value greater than 3 and less than 10.");
 		}
-		else{
+		else {
 			this.props.newGame(this.state.inputValue, this.state.inputValue);
 		}
 	}
