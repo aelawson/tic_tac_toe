@@ -5,6 +5,7 @@ A version of Tic Tac Toe written with React.
 
 How To Build:
 npm install
+
 npm run build
 
 Open index.html in your favorite browser.
