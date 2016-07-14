@@ -7,7 +7,7 @@ export const initialState = {
 	board: helpers.createBoard(3),
 	boardDim: 3,
 	currentMatch: 0,
-	numMoves: 0,
+	numMoves: 1,
 	currentPlayer: GameTypes.PLAYER_ONE,
 	matchStatus: GameTypes.NEW_GAME
 };
@@ -29,7 +29,7 @@ export default function reducer(state=initialState, action) {
 				boardDim: state.boardDim,
 				currentPlayer: helpers.togglePlayer(state.currentPlayer),
 				currentMatch: state.currentMatch,
-				numMoves: state.numMoves,
+				numMoves: state.numMoves + 1,
 				matchStatus: matchStatus
 			};
 		case ActionTypes.RESET_BOARD:
@@ -39,7 +39,7 @@ export default function reducer(state=initialState, action) {
 				boardDim: state.boardDim,
 				currentPlayer: helpers.togglePlayer(state.currentPlayer),
 				currentMatch: state.currentMatch + 1,
-				numMoves: state.numMoves,
+				numMoves: 1,
 				matchStatus: GameTypes.NOT_WINNER
 			};
 		case ActionTypes.NEW_GAME:
@@ -49,7 +49,7 @@ export default function reducer(state=initialState, action) {
 				boardDim: action.payload.boardDim,
 				currentPlayer: helpers.togglePlayer(state.currentPlayer),
 				currentMatch: 1,
-				numMoves: 0,
+				numMoves: 1,
 				matchStatus: GameTypes.NOT_WINNER
 			};
 		default:
