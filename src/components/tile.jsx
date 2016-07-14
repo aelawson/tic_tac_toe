@@ -1,36 +1,20 @@
 import React from 'react';
+import * as Helpers from '../helpers/componenthelpers';
 
 require('./css/tile.css');
 
-export function setTileValue(value) {
-	if (value != null) {
-		return value;
-	}
-	return "";
-}
-
-export function setTileClickable(context, value) {
-	if (value != null) {
-		return () => { "return false" };
-	}
-	return context.onClick.bind(context);
-}
-
 export default class Tile extends React.Component {
 	render() {
-		const tileSize = {
-			width: this.props.tileSize + "px",
-			height: this.props.tileSize + "px"
-		};
-		const tileClickEvent = setTileClickable(this, this.props.value);
-		const tileValue = setTileValue(this.props.value);
+		const tileStyle = Helpers.getTileStyle(this.props.tileSize);
+		const tileClickEvent = Helpers.setTileClickable(this, this.props.value);
+		const tileIcon = Helpers.setTileIcon(this.props.value);
 		return (
 			<div
 				className="tile"
 				onClick={tileClickEvent}
-				style={tileSize}
+				style={tileStyle}
 			>
-				<span className="tileValue">{tileValue}</span>
+				<span className={tileIcon}></span>
 			</div>
 		);
 	}
