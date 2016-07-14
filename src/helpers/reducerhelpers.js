@@ -10,7 +10,7 @@ export const initialState = {
 };
 
 export function createBoard(boardDim) {
-	// Create a 1D board of size boardDim * boardDim.
+	// Create a flattened board of size boardDim * boardDim.
 	const flatSize = boardDim * boardDim;
 	var rows = new Array(flatSize);
 	for (var i = 0; i < flatSize; i++) {
