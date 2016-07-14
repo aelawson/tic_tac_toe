@@ -1,9 +1,8 @@
-import * as Types from '../constants/actiontypes';
+import * as ActionTypes from '../constants/actiontypes';
 
 export function makeMove(tileId, player) {
-	// TODO: Action for making a move
 	return {
-		type: Types.MAKE_MOVE,
+		type: ActionTypes.MAKE_MOVE,
 		payload: { 
 			tileId: tileId,
 			player: player
@@ -12,20 +11,17 @@ export function makeMove(tileId, player) {
 }
 
 export function resetBoard() {
-	// TODO: Action for resetting the board.
 	return {
-		type: Types.RESET_BOARD,
+		type: ActionTypes.RESET_BOARD,
 		payload: { }
 	};
 }
 
-export function newGame(boardDim, numMatches) {
-	// TODO: Action for starting a new game.
+export function newGame(boardDim) {
 	return {
-		type: Types.NEW_GAME,
+		type: ActionTypes.NEW_GAME,
 		payload: { 
-			boardDim: boardDim,
-			numMatches: numMatches
+			boardDim: boardDim
 		}
 	};
 }

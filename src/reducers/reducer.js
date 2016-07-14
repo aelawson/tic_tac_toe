@@ -1,51 +1,46 @@
-import * as Types from '../constants/actiontypes';
+import * as ActionTypes from '../constants/actiontypes';
+import * as GameTypes from '../constants/gametypes';
+import { initialState } from '../helpers/reducerhelpers';
+import * as Helpers from '../helpers/reducerhelpers';
+import _ from 'lodash';
 
-const initialState = {
-	board: createBoard(3),
-	boardDim: null,
-	currentMatch: null,
-	numMatches: 3,
-	currentPlayer: null
-};
-
-function createBoard(boardDim) {
-	var rows = new Array(boardDim);
-	for (var i = 0; i < boardDim; i++) {
-		// Add array of size 'boardDim' to represent cols.
-		rows[i] = new Array(boardDim);
-	}
-
-	return rows;
-}
-
-function tileIdToCoords(tileId) {
-	return;
-}
-
-function makeMoveOnBoard(board, player, tileId) {
-	return;
-}
-
-export default function gameInfo(state=initialState, action) {
+export default function reducer(state=initialState, action) {
 	switch(action.type) {
-		case Types.MAKE_MOVE:
-			// TODO: Add logic for making a move.
-			return state;
-		case Types.RESET_BOARD:
+		case ActionTypes.MAKE_MOVE:
+			// Update board state (deep clone, immutable states).
+			const tileId = action.payload.tileId;
+			const player = action.payload.player;
+			const board = _.cloneDeep(state.board);
+			board[tileId] = player;
+			const matchStatus = Helpers.isWinner(board, state.boardDim, tileId, player, state.numMoves)
+			// See if the current player is a winner.
 			return {
-				board: createBoard(state.boardDim),
+				board: board,
+				boardDim: state.boardDim,
+				currentPlayer: Helpers.togglePlayer(state.currentPlayer),
+				currentMatch: state.currentMatch,
+				numMoves: state.numMoves + 1,
+				matchStatus: matchStatus
+			};
+		case ActionTypes.RESET_BOARD:
+			// Return new board with same dimensions as before.
+			return {
+				board: Helpers.createBoard(state.boardDim),
 				boardDim: state.boardDim,
 				currentPlayer: state.currentPlayer,
 				currentMatch: state.currentMatch + 1,
-				numMatches: state.numMatches
+				numMoves: 1,
+				matchStatus: GameTypes.NOT_WINNER
 			};
-		case Types.NEW_GAME:
+		case ActionTypes.NEW_GAME:
+			// Let player choose new game settings.
 			return {
-				board: createBoard(action.boardDim),
-				boardDim: action.boardDim,
-				currentPlayer: action.currentPlayer,
+				board: Helpers.createBoard(action.payload.boardDim),
+				boardDim: action.payload.boardDim,
+				currentPlayer: state.currentPlayer,
 				currentMatch: 1,
-				numMatches: action.numMatches
+				numMoves: 1,
+				matchStatus: GameTypes.NOT_WINNER
 			};
 		default:
 			return state;

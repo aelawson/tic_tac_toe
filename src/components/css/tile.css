@@ -1,0 +1,13 @@
+.tile {
+	display: table;
+	border-radius: 30px;
+	float: left;
+	margin: 10px;
+	background-color: #FFFFFF;
+	text-align: center;
+}
+
+.tileValue {
+	display:table-cell;
+	vertical-align:middle;
+}
