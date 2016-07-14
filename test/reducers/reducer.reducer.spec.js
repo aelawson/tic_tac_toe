@@ -14,7 +14,6 @@ describe('Reducers', () => {
 				player: GameTypes.PLAYER_ONE
 			}
 		};
-		// Expected Result
 		const state = Helpers.initialState;
 		const tileId = action.payload.tileId;
 		const player = action.payload.player;

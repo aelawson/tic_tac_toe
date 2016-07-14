@@ -31,27 +31,77 @@ describe('Helpers', () => {
 
 	describe('checkRow()', () => {
 		it('should return true for a winning row"', () => {
-			// TODO: Implement test.
-			chai.expect(true).to.equal(true);
+			const board = [ "X", "X", "X", "O", "O", null, null, null, null ];
+			const boardDim = 3;
+			const tileId = 2;
+			const player = GameTypes.PLAYER_ONE;
+			const expectedResult = true;
+			const actualResult = Helpers.checkRow(board, boardDim, tileId, player);
+			chai.expect(actualResult).to.equal(expectedResult);
+		});
+
+		it('should return false for a non-winning row"', () => {
+			const board = [ "O", "X", "X", "O", "O", "X", null, null, null ];
+			const boardDim = 3;
+			const tileId = 5;
+			const player = GameTypes.PLAYER_ONE;
+			const expectedResult = false;
+			const actualResult = Helpers.checkRow(board, boardDim, tileId, player);
+			chai.expect(actualResult).to.equal(expectedResult);
 		});
 	});
 
 	describe('checkCol()', () => {
-		it('should return true for a winning column"', () => {
-			// TODO: Implement test.
-			chai.expect(true).to.equal(true);
+		it('should return true for a winning col"', () => {
+			const board = [ "X", "X", "X", "O", "X", "O", "O", "X", "O" ];
+			const boardDim = 3;
+			const tileId = 7;
+			const player = GameTypes.PLAYER_ONE;
+			const expectedResult = true;
+			const actualResult = Helpers.checkCol(board, boardDim, tileId, player);
+			chai.expect(actualResult).to.equal(expectedResult);
+		});
+
+		it('should return false for a non-winning col"', () => {
+			const board = [ "X", "X", "X", "O", "X", "X", "O", "O", "O" ];
+			const boardDim = 3;
+			const tileId = 5;
+			const player = GameTypes.PLAYER_ONE;
+			const expectedResult = false;
+			const actualResult = Helpers.checkCol(board, boardDim, tileId, player);
+			chai.expect(actualResult).to.equal(expectedResult);
 		});
 	});
 
 	describe('checkDiag()', () => {
-		it('should return true for a winning diagonal"', () => {
-			// TODO: Implement test.
-			chai.expect(true).to.equal(true);
+		it('should return true for a winning diag"', () => {
+			const board = [ "X", "O", "O", null, "X", null, null, null, "X" ];
+			const boardDim = 3;
+			const tileId = 8;
+			const player = GameTypes.PLAYER_ONE;
+			const expectedResult = true;
+			const actualResult = Helpers.checkDiag(board, boardDim, player);
+			chai.expect(actualResult).to.equal(expectedResult);
+		});
+
+		it('should return false for a non-winning diag"', () => {
+			const board = [ "X", "O", "O", null, "O", null, "X", null, "X" ];
+			const boardDim = 3;
+			const tileId = 8;
+			const player = GameTypes.PLAYER_ONE;
+			const expectedResult = false;
+			const actualResult = Helpers.checkDiag(board, boardDim, player);
+			chai.expect(actualResult).to.equal(expectedResult);
 		});
 	});
 
 	describe('checkRevDiag()', () => {
 		it('should return true for a winning reverse diagonal"', () => {
+			// TODO: Implement test.
+			chai.expect(true).to.equal(true);
+		});
+
+		it('should return false for a non-winning reverse diagonal"', () => {
 			// TODO: Implement test.
 			chai.expect(true).to.equal(true);
 		});
