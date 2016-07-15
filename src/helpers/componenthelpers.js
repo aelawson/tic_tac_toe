@@ -1,4 +1,5 @@
 import * as GameTypes from '../constants/gametypes';
+import { togglePlayer } from './reducerhelpers';
 import { showOverlay, hideOverlay } from '../constants/styles';
 
 export function getTileSize(boardDim) {
@@ -49,6 +50,15 @@ export function getTileStyle(size) {
 		width: size + "px",
 		height: size + "px"
 	};
+}
+
+export function getEndGameMessage(matchStatus, player) {
+	if (matchStatus === GameTypes.DRAW) {
+		return GameTypes.DRAW;
+	}
+	else {
+		return togglePlayer(player) + " WINS!";
+	}
 }
 
 export function isInvalidInput(input) {

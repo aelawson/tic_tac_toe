@@ -40,7 +40,7 @@ export default class Board extends React.Component {
 				<div className="gameOverlay" style={endGameStyle}>
 					<div className="gameOverlayInfo">
 						<h2>
-							{(this.props.matchStatus == GameTypes.DRAW) ? GameTypes.DRAW : (togglePlayer(this.props.currentPlayer) + " WINS!")}
+							{Helpers.getEndGameMessage(this.props.matchStatus, this.props.currentPlayer)}
 						</h2>
 						<button onClick={this.props.resetBoard}>
 							Rematch
