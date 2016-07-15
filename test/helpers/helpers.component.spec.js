@@ -124,4 +124,24 @@ describe('Component Helpers', () => {
 			chai.expect(actualResult).to.equal(expectedResult);
 		});
 	});
+
+	describe('getTileSize()', () => {
+		it('should return the expected size given a boardDim of 3', () => {
+			var marginSize = 10;
+			var boardSize = 500;
+			var remSpace = boardSize - (3 * (marginSize * 2))
+			const expectedResult = remSpace / 3;
+			const actualResult = Helpers.getTileSize(3);
+			chai.expect(actualResult).to.equal(expectedResult);
+		});
+
+		it('should return NaN given a boardDim of 0', () => {
+			var marginSize = 10;
+			var boardSize = 500;
+			var remSpace = boardSize - (0 * (marginSize * 2))
+			const expectedResult = remSpace / 0;
+			const actualResult = Helpers.getTileSize(0);
+			chai.expect(actualResult).to.equal(expectedResult);
+		});
+	});
 });
