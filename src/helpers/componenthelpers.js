@@ -63,8 +63,7 @@ export function getEndGameMessage(matchStatus, player) {
 
 export function isInvalidInput(input) {
 	return (
-		typeof input === "undefined"
-		|| isNaN(input)
+		isNaN(input)
 		|| input < 3
 		|| input > 10
 	);

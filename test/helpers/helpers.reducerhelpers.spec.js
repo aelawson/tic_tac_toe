@@ -4,7 +4,7 @@ import * as GameTypes from '../../src/constants/gametypes';
 import * as reducers from '../../src/reducers/reducer';
 import * as Helpers from '../../src/helpers/reducerhelpers'
 
-describe('Helpers', () => {
+describe('Reducer Helpers', () => {
 	describe('createBoard()', () => {
 		it('should return a 1D, flattened array of size "boardDim"^2', () => {
 			const boardDim = 10;
