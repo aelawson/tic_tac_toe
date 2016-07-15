@@ -10,7 +10,7 @@ export default class Board extends React.Component {
 	// Use local state for controlling input form.
 	constructor(props) {
 		super(props);
-		this.state = { };
+		this.state = {inputValue: this.props.boardDim};
 	}
 
 	render() {
@@ -40,7 +40,7 @@ export default class Board extends React.Component {
 				<div className="gameOverlay" style={endGameStyle}>
 					<div className="gameOverlayInfo">
 						<h2>
-							{(this.props.matchStatus == GameTypes.DRAW) ? GameTypes.DRAW : (togglePlayer(this.props.currentPlayer) + " WINS!")}
+							{Helpers.getEndGameMessage(this.props.matchStatus, this.props.currentPlayer)}
 						</h2>
 						<button onClick={this.props.resetBoard}>
 							Rematch
@@ -66,12 +66,8 @@ export default class Board extends React.Component {
 		);
 	}
 
-	getInitialState() {
-		return {inputValue: this.props.boardDim};
-	}
-
 	onClickNewGame() {
-		if (typeof this.state.inputValue === "undefined" || this.state.inputValue < 3 || this.state.inputValue > 10) {
+		if (Helpers.isInvalidInput(this.state.inputValue)) {
 			alert("Please enter a value greater than 3 and less than 10.");
 		}
 		else {
