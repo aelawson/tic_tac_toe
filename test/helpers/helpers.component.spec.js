@@ -108,19 +108,19 @@ describe('Component Helpers', () => {
 	describe('setEndGameOverlay()', () => {
 		it('should return the "showOverlay" style given GameTypes.WINNER', () => {
 			const expectedResult = Styles.showOverlay;
-			const actualResult = Helpers.setStartGameOverlay(GameTypes.WINNER);
+			const actualResult = Helpers.setEndGameOverlay(GameTypes.WINNER);
 			chai.expect(actualResult).to.equal(expectedResult);
 		});
 
 		it('should return the "showOverlay" style given GameTypes.DRAW', () => {
 			const expectedResult = Styles.showOverlay;
-			const actualResult = Helpers.setStartGameOverlay(GameTypes.DRAW);
+			const actualResult = Helpers.setEndGameOverlay(GameTypes.DRAW);
 			chai.expect(actualResult).to.equal(expectedResult);
 		});
 
 		it('should return the "hideOverlay" style given GameTypes.NOT_WINNER', () => {
 			const expectedResult = Styles.hideOverlay;
-			const actualResult = Helpers.setStartGameOverlay(GameTypes.NOT_WINNER);
+			const actualResult = Helpers.setEndGameOverlay(GameTypes.NOT_WINNER);
 			chai.expect(actualResult).to.equal(expectedResult);
 		});
 	});
