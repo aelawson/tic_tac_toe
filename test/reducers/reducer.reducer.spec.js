@@ -10,18 +10,21 @@ describe('Reducers', () => {
 		const action = {
 			type: ActionTypes.MAKE_MOVE,
 			payload: { 
-				tileId: 0,
-				player: GameTypes.PLAYER_ONE
+				tileId: 0
 			}
 		};
 		const state = Helpers.initialState;
-		const tileId = action.payload.tileId;
-		const player = action.payload.player;
-		const board = _.cloneDeep(state.board);
-		board[tileId] = player;
-		const matchStatus = Helpers.isWinner(board, state.boardDim, tileId, player, state.numMoves);
+		const newBoard = _.cloneDeep(state.board);
+		newBoard[action.payload.tileId] = state.currentPlayer;
+		const matchStatus = Helpers.isWinner(
+			newBoard,
+			state.boardDim,
+			action.payload.tileId,
+			state.currentPlayer,
+			state.numMoves
+		);
 		const expectedResult = {
-			board: board,
+			board: newBoard,
 			boardDim: state.boardDim,
 			currentPlayer: Helpers.togglePlayer(state.currentPlayer),
 			currentMatch: state.currentMatch,
