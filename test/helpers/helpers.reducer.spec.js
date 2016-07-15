@@ -77,7 +77,6 @@ describe('Reducer Helpers', () => {
 		it('should return true for a winning diag"', () => {
 			const board = [ "X", "O", "O", null, "X", null, null, null, "X" ];
 			const boardDim = 3;
-			const tileId = 8;
 			const player = GameTypes.PLAYER_ONE;
 			const expectedResult = true;
 			const actualResult = Helpers.checkDiag(board, boardDim, player);
@@ -87,7 +86,6 @@ describe('Reducer Helpers', () => {
 		it('should return false for a non-winning diag"', () => {
 			const board = [ "X", "O", "O", null, "O", null, "X", null, "X" ];
 			const boardDim = 3;
-			const tileId = 8;
 			const player = GameTypes.PLAYER_ONE;
 			const expectedResult = false;
 			const actualResult = Helpers.checkDiag(board, boardDim, player);
@@ -97,13 +95,21 @@ describe('Reducer Helpers', () => {
 
 	describe('checkRevDiag()', () => {
 		it('should return true for a winning reverse diagonal"', () => {
-			// TODO: Implement test.
-			chai.expect(true).to.equal(true);
+			const board = [ "X", "O", "X", "O", "X", null, "X", null, "O" ];
+			const boardDim = 3;
+			const player = GameTypes.PLAYER_ONE;
+			const expectedResult = true;
+			const actualResult = Helpers.checkRevDiag(board, boardDim, player);
+			chai.expect(actualResult).to.equal(expectedResult);
 		});
 
 		it('should return false for a non-winning reverse diagonal"', () => {
-			// TODO: Implement test.
-			chai.expect(true).to.equal(true);
+			const board = [ "X", "O", "X", "O", "X", null, "O", null, "X" ];
+			const boardDim = 3;
+			const player = GameTypes.PLAYER_ONE;
+			const expectedResult = false;
+			const actualResult = Helpers.checkRevDiag(board, boardDim, player);
+			chai.expect(actualResult).to.equal(expectedResult);
 		});
 	});
 });
