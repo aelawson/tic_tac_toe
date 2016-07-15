@@ -29,4 +29,24 @@ describe('Component Helpers', () => {
 			chai.expect(actualResult).to.equal(expectedResult);
 		});
 	});
+
+	describe('getEndGameMessage()', () => {
+		it('should return "DRAW" given a GameType.DRAW"', () => {
+			const expectedResult = GameTypes.DRAW;
+			const actualResult = Helpers.getEndGameMessage(GameTypes.DRAW, GameTypes.PLAYER_ONE)
+			chai.expect(actualResult).to.equal(expectedResult);
+		});
+
+		it('should return "GameTypes.PLAYER_TWO WINS!" given a non-draw GameType and GameTypes.PLAYER_ONE"', () => {
+			const expectedResult = GameTypes.PLAYER_TWO + " WINS!";
+			const actualResult = Helpers.getEndGameMessage(GameTypes.WINNER, GameTypes.PLAYER_ONE)
+			chai.expect(actualResult).to.equal(expectedResult);
+		});
+
+		it('should return "GameTypes.PLAYER_ONE WINS!" given a non-draw GameType and GameTypes.PLAYER_TWO"', () => {
+			const expectedResult = GameTypes.PLAYER_ONE + " WINS!";
+			const actualResult = Helpers.getEndGameMessage(GameTypes.WINNER, GameTypes.PLAYER_TWO)
+			chai.expect(actualResult).to.equal(expectedResult);
+		});
+	});
 });
