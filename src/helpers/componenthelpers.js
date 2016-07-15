@@ -50,3 +50,12 @@ export function getTileStyle(size) {
 		height: size + "px"
 	};
 }
+
+export function isInvalidInput(input) {
+	return (
+		typeof input === "undefined"
+		|| isNaN(input)
+		|| input < 3
+		|| input > 10
+	);
+}
