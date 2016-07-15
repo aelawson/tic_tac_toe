@@ -74,8 +74,8 @@ describe('Component Helpers', () => {
 		});
 
 		it('should return GameTypes.PLAYER_TWO given a non-null value', () => {
-			const actualResult = Helpers.setTileIcon(GameTypes.PLAYER_ONE);
-			chai.expect(actualResult).to.equal(GameTypes.PLAYER_ONE);
+			const actualResult = Helpers.setTileIcon(GameTypes.PLAYER_TWO);
+			chai.expect(actualResult).to.equal(GameTypes.PLAYER_TWO);
 		});
 
 		it('should return "" given a null value', () => {
