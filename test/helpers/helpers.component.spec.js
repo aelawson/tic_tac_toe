@@ -66,4 +66,21 @@ describe('Component Helpers', () => {
 			chai.expect(actualResult).to.deep.equal(expectedResult);
 		});
 	});
+
+	describe('setTileIcon()', () => {
+		it('should return GameTypes.PLAYER_ONE given a non-null value', () => {
+			const actualResult = Helpers.setTileIcon(GameTypes.PLAYER_ONE);
+			chai.expect(actualResult).to.equal(GameTypes.PLAYER_ONE);
+		});
+
+		it('should return GameTypes.PLAYER_TWO given a non-null value', () => {
+			const actualResult = Helpers.setTileIcon(GameTypes.PLAYER_ONE);
+			chai.expect(actualResult).to.equal(GameTypes.PLAYER_ONE);
+		});
+
+		it('should return "" given a null value', () => {
+			const actualResult = Helpers.setTileIcon(null);
+			chai.expect(actualResult).to.equal("");
+		});
+	});	
 });
