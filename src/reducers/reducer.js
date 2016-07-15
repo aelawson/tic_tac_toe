@@ -7,16 +7,18 @@ import _ from 'lodash';
 export default function reducer(state=initialState, action) {
 	switch(action.type) {
 		case ActionTypes.MAKE_MOVE:
-			// Return new board with new move.
-			const tileId = action.payload.tileId;
-			const player = action.payload.player;
-			// Update board state (deep clone, immutable states).
-			const board = _.cloneDeep(state.board);
-			// Make move and see if the player is a winner.
-			board[tileId] = player;
-			const matchStatus = Helpers.isWinner(board, state.boardDim, tileId, player, state.numMoves)
+			// Make a move and check if it causes a winning state.
+			const newBoard = _.cloneDeep(state.board);
+			newBoard[action.payload.tileId] = state.currentPlayer;
+			const matchStatus = Helpers.isWinner(
+				newBoard,
+				state.boardDim,
+				action.payload.tileId,
+				state.currentPlayer,
+				state.numMoves
+			);
 			return {
-				board: board,
+				board: newBoard,
 				boardDim: state.boardDim,
 				currentPlayer: Helpers.togglePlayer(state.currentPlayer),
 				currentMatch: state.currentMatch,
