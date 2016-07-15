@@ -4,8 +4,7 @@ export function makeMove(tileId, player) {
 	return {
 		type: ActionTypes.MAKE_MOVE,
 		payload: { 
-			tileId: tileId,
-			player: player
+			tileId: tileId
 		}
 	};
 }
