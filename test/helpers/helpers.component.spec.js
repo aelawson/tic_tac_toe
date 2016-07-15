@@ -49,4 +49,21 @@ describe('Component Helpers', () => {
 			chai.expect(actualResult).to.equal(expectedResult);
 		});
 	});
+
+	describe('getTileStyle()', () => {
+		it('should return an object with width and height properties', () => {
+			const actualResult = Helpers.getTileStyle(100);
+			chai.expect(actualResult).to.have.property("width");
+			chai.expect(actualResult).to.have.property("height");
+		});
+
+		it('should return an object with width: 100px and height: 100px"', () => {
+			const expectedResult = {
+				width: "100px",
+				height: "100px"
+			};
+			const actualResult = Helpers.getTileStyle(100);
+			chai.expect(actualResult).to.deep.equal(expectedResult);
+		});
+	});
 });
