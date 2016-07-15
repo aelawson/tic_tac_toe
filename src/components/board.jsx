@@ -10,7 +10,7 @@ export default class Board extends React.Component {
 	// Use local state for controlling input form.
 	constructor(props) {
 		super(props);
-		this.state = { };
+		this.state = {inputValue: this.props.boardDim};
 	}
 
 	render() {
@@ -65,11 +65,7 @@ export default class Board extends React.Component {
 			</div>
 		);
 	}
-
-	getInitialState() {
-		return {inputValue: this.props.boardDim};
-	}
-
+	
 	onClickNewGame() {
 		if (typeof this.state.inputValue === "undefined" || this.state.inputValue < 3 || this.state.inputValue > 10) {
 			alert("Please enter a value greater than 3 and less than 10.");
