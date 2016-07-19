@@ -5,4 +5,3 @@ export const hideOverlay = {
 export const showOverlay = {
 	display: "block"
 };
-

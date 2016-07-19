@@ -1,7 +1,9 @@
 import * as GameTypes from '../constants/gametypes';
+import { togglePlayer } from './reducerhelpers';
 import { showOverlay, hideOverlay } from '../constants/styles';
 
 export function getTileSize(boardDim) {
+	// Hardcoded, would ideally be tied to a variable.
 	var marginSize = 10;
 	var boardSize = 500;
 	var remSpace = boardSize - (boardDim * (marginSize * 2))
@@ -29,10 +31,8 @@ export function setEndGameOverlay(matchStatus) {
 export function setTileIcon(value) {
 	if (value != null) {
 		if (value === GameTypes.PLAYER_ONE) {
-			//return "fa-times";
 			return GameTypes.PLAYER_ONE;
 		}
-		//return "fa-circle-o";
 		return GameTypes.PLAYER_TWO;
 	}
 	return "";
@@ -50,4 +50,21 @@ export function getTileStyle(size) {
 		width: size + "px",
 		height: size + "px"
 	};
+}
+
+export function getEndGameMessage(matchStatus, player) {
+	if (matchStatus === GameTypes.DRAW) {
+		return GameTypes.DRAW;
+	}
+	else {
+		return togglePlayer(player) + " WINS!";
+	}
+}
+
+export function isInvalidInput(input) {
+	return (
+		isNaN(input)
+		|| input < 3
+		|| input > 10
+	);
 }

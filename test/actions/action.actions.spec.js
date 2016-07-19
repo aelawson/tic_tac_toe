@@ -15,11 +15,10 @@ describe('Actions', () => {
 			const expectedResult = {
 				type: ActionTypes.MAKE_MOVE,
 				payload: {
-					tileId: 0,
-					player: GameTypes.PLAYER_ONE
+					tileId: 0
 				}
 			};
-			const actionResult = actions.makeMove(0, GameTypes.PLAYER_ONE);
+			const actionResult = actions.makeMove(0);
 			chai.expect(actionResult).to.deep.equal(expectedResult);
 		});
 	});
